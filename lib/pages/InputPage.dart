@@ -2,8 +2,10 @@ import 'package:bmi_calculator/widgets/Label.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/widgets/RoundedCard.dart';
 import 'package:bmi_calculator/widgets/IconLabel.dart';
+import 'package:bmi_calculator/widgets/NumberText.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/config/constants.dart';
+import 'package:bmi_calculator/widgets/RoundIconButton.dart';
 
 enum Gender { male, female }
 
@@ -15,6 +17,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
   double height = 170;
+  int weight = 50;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -66,25 +70,20 @@ class _InputPageState extends State<InputPage> {
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
                       children: <Widget>[
-                        Text(
-                          '${height.round()}',
-                          style: TextStyle(
-                            fontSize: 55.0,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
+                        NumberText(height.round()),
                         Label('cm'),
                       ],
                     ),
                     SliderTheme(
                       data: SliderTheme.of(context).copyWith(
-                        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                        overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
-                        activeTrackColor: Colors.white,
-                        inactiveTrackColor: kSecondaryColor,
-                        thumbColor: kPrimaryColor,
-                        overlayColor: Color(0x29EB1555)
-                      ),
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30.0),
+                          activeTrackColor: Colors.white,
+                          inactiveTrackColor: kSecondaryColor,
+                          thumbColor: kPrimaryColor,
+                          overlayColor: Color(0x29EB1555)),
                       child: Slider(
                         min: 50,
                         max: 280,
@@ -100,8 +99,60 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: RoundedCard(color: kInactiveCardColor)),
-                  Expanded(child: RoundedCard(color: kInactiveCardColor)),
+                  Expanded(
+                    child: RoundedCard(
+                      color: kInactiveCardColor,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Label('WEIGHT'),
+                          NumberText(weight),
+                          SizedBox(height: 3.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                Icons.add,
+                                onPressed: () => setState(() => weight++),
+                              ),
+                              SizedBox(width: 10.0),
+                              RoundIconButton(
+                                Icons.remove,
+                                onPressed: () => setState(() => weight--),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: RoundedCard(
+                      color: kInactiveCardColor,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Label('AGE'),
+                          NumberText(age),
+                          SizedBox(height: 3.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(
+                                Icons.add,
+                                onPressed: () => setState(() => age++),
+                              ),
+                              SizedBox(width: 10.0),
+                              RoundIconButton(
+                                Icons.remove,
+                                onPressed: () => setState(() => age--),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
