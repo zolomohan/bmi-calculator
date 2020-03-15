@@ -1,11 +1,9 @@
+import 'package:bmi_calculator/widgets/Label.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/widgets/RoundedCard.dart';
 import 'package:bmi_calculator/widgets/IconLabel.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-const activeCardColor = Color(0xFF1D1E33);
-const inactiveCardColor = Color(0xFF111328);
-const calculateButtonColor = Color(0xFFEB1555);
+import 'package:bmi_calculator/config/constants.dart';
 
 enum Gender { male, female }
 
@@ -16,6 +14,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
+  double height = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,8 @@ class _InputPageState extends State<InputPage> {
                     child: RoundedCard(
                       onTap: () => setState(() => selectedGender = Gender.male),
                       color: (selectedGender == Gender.male)
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       child: IconLabel(
                         icon: FontAwesomeIcons.mars,
                         label: 'MALE',
@@ -44,8 +43,8 @@ class _InputPageState extends State<InputPage> {
                       onTap: () =>
                           setState(() => selectedGender = Gender.female),
                       color: (selectedGender == Gender.female)
-                          ? activeCardColor
-                          : inactiveCardColor,
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
                       child: IconLabel(
                         icon: FontAwesomeIcons.venus,
                         label: 'FEMALE',
@@ -55,17 +54,59 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Expanded(child: RoundedCard(color: inactiveCardColor)),
+            Expanded(
+              child: RoundedCard(
+                color: kInactiveCardColor,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Label('HEIGHT'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: <Widget>[
+                        Text(
+                          '${height.round()}',
+                          style: TextStyle(
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        Label('cm'),
+                      ],
+                    ),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: kSecondaryColor,
+                        thumbColor: kPrimaryColor,
+                        overlayColor: Color(0x29EB1555)
+                      ),
+                      child: Slider(
+                        min: 50,
+                        max: 280,
+                        value: height.toDouble(),
+                        onChanged: (double newHeight) =>
+                            setState(() => height = newHeight),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: Row(
                 children: <Widget>[
-                  Expanded(child: RoundedCard(color: inactiveCardColor)),
-                  Expanded(child: RoundedCard(color: inactiveCardColor)),
+                  Expanded(child: RoundedCard(color: kInactiveCardColor)),
+                  Expanded(child: RoundedCard(color: kInactiveCardColor)),
                 ],
               ),
             ),
             Container(
-              color: calculateButtonColor,
+              color: kPrimaryColor,
               width: double.infinity,
               height: 60.0,
               margin: EdgeInsets.only(top: 10.0),

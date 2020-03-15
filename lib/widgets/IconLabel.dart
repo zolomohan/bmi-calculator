@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/widgets/Label.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,13 +15,7 @@ class IconLabel extends StatelessWidget {
       children: <Widget>[
         FaIcon(icon, size: 80.0),
         SizedBox(height: 5.0),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Color(0xFF8D8E98),
-          ),
-        ),
+        Label(label),
       ],
     );
   }
