@@ -4,13 +4,15 @@ import 'package:bmi_calculator/widgets/UI/RoundedCard.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
+
+  final String result, interpretation, bmi;
+
+  ResultPage({this.bmi, this.result, this.interpretation});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR'),
-
-        ),
+        appBar: AppBar(title: Text('BMI CALCULATOR')),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -31,7 +33,7 @@ class ResultPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'NORMAL',
+                      result,
                       style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -39,12 +41,12 @@ class ResultPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '18.3',
+                      bmi.toString(),
                       style: TextStyle(
                           fontSize: 100.0, fontWeight: FontWeight.w900),
                     ),
                     Text(
-                      'Your BMI is quite low. You should eat more.',
+                      interpretation,
                       style: TextStyle(fontSize: 22.0),
                       textAlign: TextAlign.center,
                     )
