@@ -4,6 +4,7 @@ class RoundedCard extends StatelessWidget {
 
   final Color color;
   final Widget child;
+
   RoundedCard({@required this.color, this.child}){}
 
   @override
