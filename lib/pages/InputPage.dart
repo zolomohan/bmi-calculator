@@ -7,14 +7,15 @@ const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 const calculateButtonColor = Color(0xFFEB1555);
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
-
-  bool gender = true; // true - Male, false - Female
+  Gender selectedGender = Gender.male;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,11 @@ class _InputPageState extends State<InputPage> {
                 children: <Widget>[
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => setState(() => gender = true),
+                      onTap: () => setState(() => selectedGender = Gender.male),
                       child: RoundedCard(
-                          color: (gender) ? activeCardColor : inactiveCardColor,
+                          color: (selectedGender == Gender.male)
+                              ? activeCardColor
+                              : inactiveCardColor,
                           child: IconLabel(
                             icon: FontAwesomeIcons.mars,
                             label: 'MALE',
@@ -39,9 +42,12 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () => setState(() => gender = true),
+                      onTap: () =>
+                          setState(() => selectedGender = Gender.female),
                       child: RoundedCard(
-                          color: (!gender) ? activeCardColor : inactiveCardColor,
+                          color: (selectedGender == Gender.female)
+                              ? activeCardColor
+                              : inactiveCardColor,
                           child: IconLabel(
                             icon: FontAwesomeIcons.venus,
                             label: 'FEMALE',
