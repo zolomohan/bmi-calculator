@@ -3,7 +3,7 @@ import 'package:bmi_calculator/widgets/UI/RoundedCard.dart';
 import 'package:bmi_calculator/config/constants.dart';
 import 'package:bmi_calculator/widgets/UI/Label.dart';
 import 'package:bmi_calculator/widgets/UI/NumberText.dart';
-import 'package:bmi_calculator/widgets/UI/RoundIconButton.dart';
+import 'package:bmi_calculator/widgets/UI/buttons/RoundIconButton.dart';
 
 class CounterCard extends StatelessWidget {
   final int value;
@@ -16,7 +16,7 @@ class CounterCard extends StatelessWidget {
     @required this.label,
     @required this.onIncrease,
     @required this.onDecrease
-  }) {}
+  });
 
   @override
   Widget build(BuildContext context) {

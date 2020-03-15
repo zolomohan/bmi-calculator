@@ -6,7 +6,7 @@ class RoundedCard extends StatelessWidget {
   final Widget child;
   final Function onTap;
 
-  RoundedCard({@required this.color, this.child, this.onTap}){}
+  RoundedCard({@required this.color, this.child, this.onTap});
 
   @override
   Widget build(BuildContext context) {

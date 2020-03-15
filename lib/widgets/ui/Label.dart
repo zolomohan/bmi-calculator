@@ -4,7 +4,7 @@ class Label extends StatelessWidget {
 
   final String label;
 
-  Label(@required this.label){}
+  Label(this.label);
 
   @override
   Widget build(BuildContext context) {

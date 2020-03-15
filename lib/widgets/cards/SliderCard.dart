@@ -9,7 +9,7 @@ class SliderCard extends StatelessWidget {
   final double value;
   final Function onChanged;
 
-  SliderCard({@required this.value, @required this.onChanged}){}
+  SliderCard({@required this.value, @required this.onChanged});
 
   @override
   Widget build(BuildContext context) {

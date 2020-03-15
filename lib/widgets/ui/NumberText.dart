@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NumberText extends StatelessWidget {
   final int number;
 
-  NumberText(@required this.number) {}
+  NumberText(this.number);
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class GenderCard extends StatelessWidget {
       {@required this.icon,
       @required this.label,
       @required this.onTap,
-      @required this.selected}) {}
+      @required this.selected});
 
   @override
   Widget build(BuildContext context) {
