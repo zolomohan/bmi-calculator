@@ -28,30 +28,28 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: GestureDetector(
+                    child: RoundedCard(
                       onTap: () => setState(() => selectedGender = Gender.male),
-                      child: RoundedCard(
-                          color: (selectedGender == Gender.male)
-                              ? activeCardColor
-                              : inactiveCardColor,
-                          child: IconLabel(
-                            icon: FontAwesomeIcons.mars,
-                            label: 'MALE',
-                          )),
+                      color: (selectedGender == Gender.male)
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      child: IconLabel(
+                        icon: FontAwesomeIcons.mars,
+                        label: 'MALE',
+                      ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
+                    child: RoundedCard(
                       onTap: () =>
                           setState(() => selectedGender = Gender.female),
-                      child: RoundedCard(
-                          color: (selectedGender == Gender.female)
-                              ? activeCardColor
-                              : inactiveCardColor,
-                          child: IconLabel(
-                            icon: FontAwesomeIcons.venus,
-                            label: 'FEMALE',
-                          )),
+                      color: (selectedGender == Gender.female)
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      child: IconLabel(
+                        icon: FontAwesomeIcons.venus,
+                        label: 'FEMALE',
+                      ),
                     ),
                   ),
                 ],
