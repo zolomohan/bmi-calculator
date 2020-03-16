@@ -4,7 +4,6 @@ import 'package:bmi_calculator/widgets/UI/RoundedCard.dart';
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatelessWidget {
-
   final String result, interpretation, bmi;
 
   ResultPage({this.bmi, this.result, this.interpretation});
@@ -16,16 +15,20 @@ class ResultPage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            SizedBox(height: 30.0),
             Expanded(
               child: Center(
                 child: Text(
-                  'Your Result',
-                  style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
+                  'RESULT',
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 6,
               child: RoundedCard(
                 color: kInactiveCardColor,
                 child: Column(
@@ -43,12 +46,18 @@ class ResultPage extends StatelessWidget {
                     Text(
                       bmi.toString(),
                       style: TextStyle(
-                          fontSize: 100.0, fontWeight: FontWeight.w900),
+                        fontFamily: 'Cairo',
+                        fontSize: 100.0,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
-                    Text(
-                      interpretation,
-                      style: TextStyle(fontSize: 22.0),
-                      textAlign: TextAlign.center,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        interpretation,
+                        style: TextStyle(fontSize: 22.0),
+                        textAlign: TextAlign.center,
+                      ),
                     )
                   ],
                 ),

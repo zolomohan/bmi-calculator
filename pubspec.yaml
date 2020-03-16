@@ -19,3 +19,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Regular.ttf
+    - family: Cairo
+      fonts:
+        - asset: fonts/Cairo-Bold.ttf
+          weight: 700

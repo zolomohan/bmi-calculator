@@ -23,7 +23,13 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text('BMI CALCULATOR'))),
+      appBar: AppBar(
+        elevation: 0.0,
+        title: Center(
+          child:
+              Text('BMI CALCULATOR', style: TextStyle(fontFamily: 'Raleway', fontSize: 22.0)),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -71,14 +77,18 @@ class _InputPageState extends State<InputPage> {
             BaseButton(
               buttonText: 'CALCULATE',
               onTap: () {
-                BMICalculator calculator = BMICalculator(height: height, weight: weight);
+                BMICalculator calculator =
+                    BMICalculator(height: height, weight: weight);
                 calculator.calculateBMI();
                 var result = calculator.getResult();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(
-                  bmi: calculator.calculateBMI(),
-                  result: result['result'],
-                  interpretation: result['interpretation'],
-                )));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultPage(
+                              bmi: calculator.calculateBMI(),
+                              result: result['result'],
+                              interpretation: result['interpretation'],
+                            )));
               },
             )
           ],

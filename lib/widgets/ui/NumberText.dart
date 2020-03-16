@@ -10,8 +10,9 @@ class NumberText extends StatelessWidget {
     return Text(
       '$number',
       style: TextStyle(
-        fontSize: 55.0,
-        fontWeight: FontWeight.w900,
+        fontFamily: 'Cairo',
+        fontSize: 35.0,
+        fontWeight: FontWeight.w700
       ),
     );
   }

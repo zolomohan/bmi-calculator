@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator/config/constants.dart';
 
 class BaseButton extends StatelessWidget {
-
   final String buttonText;
   final Function onTap;
 
@@ -20,7 +19,7 @@ class BaseButton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonText,
-            style: TextStyle(fontSize: 20.0),
+            style: TextStyle(fontSize: 23.0),
           ),
         ),
       ),
